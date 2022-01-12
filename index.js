@@ -1,16 +1,19 @@
 // const express = require('express');
 // const {MongoClient} = require('mongodb ')
+// const dotenv = require('dotenv');
 
 import express from 'express';
 import {MongoClient} from 'mongodb';
 import dotenv from 'dotenv';
-// import { getmoviebyid, deletemovie, addmovie, getAllmovies } from './helper';
+// import { getmoviebyid, deletemovie, addmovie, getAllmovies } from '../helper.js';
+import {moviesRouter} from './routes/movies.js';
 
 dotenv.config();
 console.log(process.env.MONGO_URL)
 
 const app = express();
 
+const PORT = process.env.PORT;
 
 
 const movies = [
@@ -80,7 +83,7 @@ const movies = [
     }
     ]
 
-const MONGO_URL = "mongodb://localhost";
+const MONGO_URL = process.env.MONGO_URL;
 
 
 async function createConnection(){
@@ -94,11 +97,12 @@ export const client = await createConnection();
 
 app.use(express.json())
 
-app.use("/movies",movieRouter)
 
 app.get('/' , (req, res) => {
-    res.send('Welcome✅😂sdfsdfasddwewreasdda')
+    res.send('Welcome✅😂')
 })
+
+app.use("/movies",moviesRouter)
 
       
 

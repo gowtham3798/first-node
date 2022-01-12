@@ -1,8 +1,14 @@
 import express from 'express';
-const router = express.router();
-import { getmoviebyid, deletemovie, addmovie, getAllmovies } from './helper.js';
+const router = express.Router();
+import { getmoviebyid, deletemovie, addmovie, getAllmovies } from '../helper.js';
 
-router.get("/movies/:id" , async (req, res) => {
+router.get("/" , async (req, res) => {
+if(req.query.rating){req.query.rating = +req.query.rating}
+   const filteredMovies = await getAllmovies(req)
+     res.send(filteredMovies)
+})
+
+router.get("/:id" , async (req, res) => {
     const {id} = req.params;
         // console.log(req.params.id)
         // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -10,7 +16,7 @@ router.get("/movies/:id" , async (req, res) => {
         movie ? res.send(movie) : res.status(400).send({message: "no movies found"});
     })
 
-        router.delete("/movies/:id" , async (req, res) => {
+router.delete("/:id" , async (req, res) => {
         const {id} = req.params;
             // console.log(req.params.id)
             // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -19,7 +25,7 @@ router.get("/movies/:id" , async (req, res) => {
         })
 
 
-        router.post("/movies" , async (req, res) => {
+router.post("/" , async (req, res) => {
             const newMovie = req.body;
                 console.log(newMovie)
                 // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -27,7 +33,7 @@ router.get("/movies/:id" , async (req, res) => {
                 res.send(movie) 
             })
 
-            router.put("/movies" , async (req, res) => {
+router.put("/" , async (req, res) => {
                 const {id} = req.params;
                 const updatedMovie = req.body;
                     console.log(updatedMovie)
@@ -38,10 +44,5 @@ router.get("/movies/:id" , async (req, res) => {
         
 
 
-router.get("/movies" , async (req, res) => {
-if(req.query.rating){req.query.rating = +req.query.rating}
-   const filteredMovies = await getAllmovies(req)
-     res.send(filteredMovies)
-})
 
-export const movieRouter = router;
+export const moviesRouter = router;

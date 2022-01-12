@@ -1,4 +1,4 @@
-import { client } from './index';
+import { client } from './index.js';
 
 export async function getAllmovies(req) {
     return await client.db("firstmongo").collection("movies").find(req.query).toArray();
