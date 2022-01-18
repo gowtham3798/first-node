@@ -16,10 +16,10 @@ console.log(process.env)
 
 var app = express();
 
-app.use(cors())
+var app = cors();
 
 
-const app = express();
+
 
 app.use(express.json())
 
