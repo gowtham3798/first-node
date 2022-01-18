@@ -13,13 +13,7 @@ import cors from 'cors';
 dotenv.config();
 console.log(process.env)
 
-
-var app = express();
-
-var app = cors();
-
-
-
+app.use(cors());
 
 app.use(express.json())
 
