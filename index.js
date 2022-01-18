@@ -5,6 +5,7 @@
 import express from 'express';
 import {MongoClient} from 'mongodb';
 import dotenv from 'dotenv';
+import cors from 'cors';
 // import {moviesRouter} from './routes/movies.js';
 // import {usersRouter} from './routes/users.js';
 // import bcrypt from 'bcrypt';
@@ -12,6 +13,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 console.log(process.env)
 
+
+var app = express();
+
+app.use(cors())
 
 
 const app = express();
