@@ -5,4 +5,10 @@ node_modules/
 backup
 fun.html
 awesome.txt
+helper.js
+routes
 .env
+mongo.jsonwebtoken
+middleware
+movies.js
+double.js

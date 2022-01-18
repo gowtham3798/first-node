@@ -1,14 +1,15 @@
 import express from 'express';
 const router = express.Router();
-import { getmoviebyid, deletemovie, addmovie, getAllmovies } from '../helper.js';
+import { getmoviebyid, deletemovie, addmovie, getAllmovies} from '../helper.js';
+import {auth} from "../middleware/auth.js"
 
-router.get("/" , async (req, res) => {
-if(req.query.rating){req.query.rating = +req.query.rating}
+router.get("/" ,auth, async (req, res) => {
+if(req.query.id){req.query.id = req.query.id}
    const filteredMovies = await getAllmovies(req)
      res.send(filteredMovies)
 })
 
-router.get("/:id" , async (req, res) => {
+router.get("/:id",auth , async (req, res) => {
     const {id} = req.params;
         // console.log(req.params.id)
         // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -16,7 +17,7 @@ router.get("/:id" , async (req, res) => {
         movie ? res.send(movie) : res.status(400).send({message: "no movies found"});
     })
 
-router.delete("/:id" , async (req, res) => {
+router.delete("/:id",auth , async (req, res) => {
         const {id} = req.params;
             // console.log(req.params.id)
             // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -25,7 +26,7 @@ router.delete("/:id" , async (req, res) => {
         })
 
 
-router.post("/" , async (req, res) => {
+router.post("/" ,auth, async (req, res) => {
             const newMovie = req.body;
                 console.log(newMovie)
                 // const movie = movies.find((mvs) => mvs.id === req.params.id)
@@ -33,7 +34,7 @@ router.post("/" , async (req, res) => {
                 res.send(movie) 
             })
 
-router.put("/" , async (req, res) => {
+router.put("/",auth , async (req, res) => {
                 const {id} = req.params;
                 const updatedMovie = req.body;
                     console.log(updatedMovie)
@@ -41,6 +42,15 @@ router.put("/" , async (req, res) => {
                     const movie = await updatedMovie(updatedMovie , id);
                     res.send(movie) 
                 })
+
+          
+            //     router.get("/timestamp" ,async (req, res) => {
+            // //   responseObject = new Date().getTime()
+            // // let minute = new Date().toUTCString()
+            //     const movie = await minute();
+            //     console.log(movie)
+            //      res.send(movie)
+            //     })
         
 
 

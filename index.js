@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 // import bcrypt from 'bcrypt';
 
 dotenv.config();
-console.log(process.env.MONGO_URL)
+console.log(process.env)
 
 
 
@@ -34,7 +34,7 @@ const pizza = [{
     "id": "101",
     "name": "Margherita",
     "image": "https://www.kimscravings.com/wp-content/uploads/2020/01/Margherita-Pizza-5.jpg",
-    "summary": "A classic delight with 100% Real mozzarella cheese",
+    "summary": "A classic delights with 100% Real mozzarella cheese",
     "type":"veg"
 },
 {   
