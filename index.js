@@ -21,7 +21,7 @@ app.use(express.json())
 const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
-    res.send("hello mf")
+    res.send("Welcome")
 })
 const pizza = [{
     "id": "100",
