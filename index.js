@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 // import {moviesRouter} from './routes/movies.js';
 // import {usersRouter} from './routes/users.js';
-// import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 console.log(process.env)
