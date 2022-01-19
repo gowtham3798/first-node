@@ -1,7 +1,7 @@
 mongo.js
 os.js
 welcome.js
-node_modules/
+
 backup
 fun.html
 awesome.txt
@@ -12,3 +12,7 @@ mongo.jsonwebtoken
 middleware
 movies.js
 double.js
+files.js
+.gitignore
+node_modulesdouble.js
+
