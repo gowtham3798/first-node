@@ -16,4 +16,4 @@ files.js
 .gitignore
 node_modulesdouble.js
 
-node_modules
+node_modules/
